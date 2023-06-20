@@ -1,6 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItem, Product } from "../../interfaces";
+import { CartItem } from "../../interfaces";
 import { RootState } from "../store";
+import { ProductInterface } from "@/shared/ProductInterface";
 
 export interface CartState {
   cartItems: CartItem[];
@@ -14,11 +15,11 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    increament: (state, action: PayloadAction<Product>) => {
+    increament: (state, action: PayloadAction<ProductInterface>) => {
       const item = state.cartItems.find(
-        (el) => el.product.id == action.payload.id
+        (el) => el.product._id == action.payload._id
       );
-      if (item) item.qty;
+      if (item) item.qty++;
       else {
         state.cartItems.push({
           product: action.payload,
@@ -26,16 +27,16 @@ export const cartSlice = createSlice({
         });
       }
     },
-    decreament: (state, action: PayloadAction<Product>) => {
+    decreament: (state, action: PayloadAction<ProductInterface>) => {
       const item = state.cartItems.find(
-        (el) => el.product.id == action.payload.id
+        (el) => el.product._id == action.payload._id
       );
       if (item) {
         item.qty--;
 
         if (item.qty == 0) {
           state.cartItems = state.cartItems.filter(
-            (el) => el.product.id !== action.payload.id
+            (el) => el.product._id !== action.payload._id
           );
         }
       }
@@ -56,7 +57,7 @@ export const totalPriceSelector = createSelector([cartItems], (cartItems) =>
 export const productQtyInCartSelector = createSelector(
   [cartItems, (cartItems, productId: string) => productId],
   (cartItems, projectId) => 
-    cartItems.find((el) => el.product.id == projectId)?.qty
+    cartItems.find((el) => el.product._id == projectId)?.qty
 );
 
 export const { increament, decreament } = cartSlice.actions;

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Wrapper from '@/shared/Wrapper';
 import { useState,useEffect } from 'react';
 import { AiOutlineShoppingCart,AiOutlineLogin  } from 'react-icons/ai';
+import CartBtn from '@/shared/CartBtn';
 
 
 
@@ -48,7 +49,7 @@ const Header = () => {
                     {isMobileScreen?(<div className='absolute right-2 '><Dropdown/></div>):(
                         <div className=' absolute md:right-3  '>
                     <ul className=' font-light flex gap-x-7 text-xl md:text-2xl'>
-                        <li><Link href={"/"}><AiOutlineShoppingCart className=' ring-slate-300 ring-8 bg-slate-300 rounded-full text-4xl'/></Link></li>
+                        <li><Link href={"/Cart"}><CartBtn/></Link></li>
                         <li><Link href={"/register"}><AiOutlineLogin  className=' ring-slate-300 ring-8 bg-slate-300 rounded-full text-4xl'/></Link></li>
                     </ul>
                         </div>)}

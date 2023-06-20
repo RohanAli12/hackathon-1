@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import bar from '/public/assets/bars.svg';
 import Image from 'next/image';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineLogin, AiOutlineShoppingCart } from 'react-icons/ai';
 
 const Dropdown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -39,13 +39,18 @@ const Dropdown = () => {
             </a>
           </li>
           <li>
-            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/All-Products">
+            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/AllProducts">
               All Products
             </a>
           </li>
           <li>
-            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/">
+            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/Cart">
               {<AiOutlineShoppingCart/>}
+            </a>
+          </li>
+          <li>
+            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/register">
+              {<AiOutlineLogin/>}
             </a>
           </li>
         </ul>

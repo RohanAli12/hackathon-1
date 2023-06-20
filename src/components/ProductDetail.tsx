@@ -5,8 +5,7 @@ import Image from 'next/image';
 import { client } from '../../sanity/lib/client';
 import { ProductInterface } from '@/shared/ProductInterface';
 import { urlForImage } from '../../sanity/lib/image';
-import AddToCartBtn from './AddToCartBtn';
-
+import AddToCartBtn from '../shared/AddToCartBtn';
 
 
 
@@ -25,7 +24,7 @@ const AllProductsData = async (_id: string): Promise<ProductInterface> => {
 
 
 
-const ProductDetail = ({ params }: { params: ProductInterface }) => {
+const ProductDetail = ({ params }: { params: ProductInterface}) => {
     const [upcommingProductDetails, setUpcommingProductDetails] = useState<ProductInterface | null>(null);
 
     useEffect(() => {
@@ -61,7 +60,7 @@ const ProductDetail = ({ params }: { params: ProductInterface }) => {
                                     <div className="text-xl hover:shadow-lg">{productPrice}</div>
                                 </div>
                                 {/* right-portion */}
-                                <div className=""><AddToCartBtn product={params}/></div>
+                                <div className=""><AddToCartBtn product={params} /></div>
                             </div>
                             {/* bottom-portion */}
                         </div>
