@@ -78,6 +78,8 @@ const Footer = () => {
             <p className="text-gray-500 text-md md:text-lg text-center sm:text-left">© 2023 Momentum —
               <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">@Copyright</a>
             </p>
+            <p className="text-gray-500 text-md md:text-lg ml-36 text-center sm:text-left">Created by — Syed Rohan Ali
+            </p>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
               <a className="text-gray-500">
                 <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-7 h-7" viewBox="0 0 24 24">

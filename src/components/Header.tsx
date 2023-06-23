@@ -37,20 +37,20 @@ const Header = () => {
                     {/* logo */}
                     <div className='flex items-center font-extrabold text-xl md:text-2xl space-x-4'>
                         <Image src={logo} alt='Shoe-Logo' width={110} height={20} />
-                        <h1>Momentum</h1>
+                        <Link href={"/"}><h1>Momentum</h1></Link>
                     </div>
                     {/* nav */}
                     
                     <ul className={`flex ${!isMobileScreen ? '' : 'hidden'} md:flex-row gap-x-4 md:space-x-3 md:justify-start  font-light text-xl md:text-2xl`}>
                         <li><Link href={"/Men"}>Men</Link></li>
-                        <li><Link href={"/"}>Women</Link></li>
+                        <li><Link href={"/Women"}>Women</Link></li>
                         <li><Link href={"/AllProducts"}>All Products</Link></li>
                     </ul>
                     {isMobileScreen?(<div className='absolute right-2 '><Dropdown/></div>):(
                         <div className=' absolute md:right-3  '>
                     <ul className=' font-light flex gap-x-7 text-xl md:text-2xl'>
                         <li><Link href={"/Cart"}><CartBtn/></Link></li>
-                        <li><Link href={"/register"}><AiOutlineLogin  className=' ring-slate-300 ring-8 bg-slate-300 rounded-full text-4xl'/></Link></li>
+                        <li><Link href={"/register"}><AiOutlineLogin  className='text-4xl'/></Link></li>
                     </ul>
                         </div>)}
                 </div>

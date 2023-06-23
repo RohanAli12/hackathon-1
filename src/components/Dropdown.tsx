@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import bar from '/public/assets/bars.svg';
+import Link from 'next/link';
 import Image from 'next/image';
 import { AiOutlineLogin, AiOutlineShoppingCart } from 'react-icons/ai';
+import CartBtn from '@/shared/CartBtn';
 
 const Dropdown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -9,49 +11,37 @@ const Dropdown = () => {
   return (
     <div className="relative">
       <button
-        className="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-full inline-flex items-center"
+        className="backdrop-filter-none text-gray-800 font-semibold inline-flex items-center"
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
-        <Image src={bar} alt='bar' width={20} height={20} />
-        {/* <svg
-          className={`ml-2 h-5 w-5 transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`}
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            d="M5.293 6.707a1 1 0 0 1 0 1.414L2.414 11h15.172a1 1 0 1 1 0 2H2.414l2.879 2.879a1 1 0 0 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 0z"
-            clipRule="evenodd"
-          /> */}
-        {/* </svg> */}
+        <Image src={bar} alt='bar' width={22} height={22} />
       </button>
       {dropdownOpen && (
         <ul className="absolute right-0 mt-2 py-2 w-48 bg-white rounded shadow-lg">
           <li>
-            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/Men">
+            <Link className="block text-xl px-4 py-2 text-gray-800 hover:bg-gray-200" href="/Men">
               Men
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/Women">
+            <Link className="block px-4 text-xl py-2 text-gray-800 hover:bg-gray-200" href="/Women">
               Women
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/AllProducts">
+            <Link className="block px-4 py-2 text-xl text-gray-800 hover:bg-gray-200" href="/AllProducts">
               All Products
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/Cart">
-              {<AiOutlineShoppingCart/>}
-            </a>
+            <Link className="block px-4 py-2 text-2xl text-gray-800 hover:bg-gray-200" href="/Cart">
+              {<CartBtn/>}
+            </Link>
           </li>
           <li>
-            <a className="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="/register">
+            <Link className="block px-4 py-2 text-3xl text-gray-800 hover:bg-gray-200" href="/register">
               {<AiOutlineLogin/>}
-            </a>
+            </Link>
           </li>
         </ul>
       )}

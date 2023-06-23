@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { v4 as uuid } from "uuid";
 import { getCookies, getCookie, setCookie } from "cookies-next";
 import Link from 'next/link';
-import {redirect,useRouter} from 'next/navigation'
+ 
 
 
 const RegisterComp = () => {
@@ -16,9 +16,8 @@ const RegisterComp = () => {
     })
     const uid = uuid();
     const cook = getCookie('authToken')
-    if (!cook) {
-        setCookie('authToken', uid)
-    }
+    
+    
     const handleChange = (event: any) => {
         setForm({
             ...form,
@@ -27,6 +26,9 @@ const RegisterComp = () => {
     }
 
     const handleSubmit = async () => {
+        if (!cook) {
+            setCookie('authToken', uid)
+        }
         try {
             const res = await fetch('/api/register', {
                 method: 'POST',
@@ -36,10 +38,8 @@ const RegisterComp = () => {
                 },
                 body: JSON.stringify(form),
             });
-            //  setCookie("address","sdsad") 
-            
-            const result = await res.json()
-            
+            //  setCookie("address","sdsad")
+            const result = await res.json()        
             if (!res.ok) {
                 console.log("fetch failed")
             }

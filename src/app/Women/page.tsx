@@ -4,17 +4,20 @@ import Products from "@/components/Products";
 import Wrapper from '@/shared/Wrapper'
 
 const getUpcommingProductData = async () => {
-    const res = await client.fetch(`*[_type=="product"]{
-        _id,   
-        image,
-        title,
-        price, 
-     }`);
+    const res = await client.fetch(`*[_type=="product" && category->name=="Women"]{
+      _id,   
+      image,
+      title,
+      price, 
+        category->{
+          name,
+          _id
+        }
+   }`);
     return res
 }
 
-
- const AllProducts = async () => {
+ const Women = async () => {
     const data: ProductInterface[] = await getUpcommingProductData()
     return (
         <section className="mt-28">
@@ -35,4 +38,4 @@ const getUpcommingProductData = async () => {
     )
 }
 
-export default AllProducts
+export default Women

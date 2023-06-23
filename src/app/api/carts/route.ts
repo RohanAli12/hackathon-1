@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { customers, db } from "@/lib/drizzle";
+import { carts, db } from "@/lib/drizzle";
 import { getCookies, getCookie, setCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
 export const GET = async (request: NextRequest) => {
   try {
-    const res = await db.select().from(customers);
+    const res = await db.select().from(carts);
     return NextResponse.json({ res });
   } catch (error) {
     console.log(error);
@@ -21,15 +21,13 @@ export const POST = async (request: NextRequest) => {
   console.log(hasCookie)
   try {
     const response = await db
-      .insert(customers)
+      .insert(carts)
       .values({
-        name: req.name,
-        email: req.email,
-        password: req.password,
-        id:hasCookie as string,
+        quantity:req.quantity,
+        product_id:req.product_id,
+        customer_id:hasCookie as string,
       })
       .returning();
-
 
     return NextResponse.json({ response });
   } catch (error) {

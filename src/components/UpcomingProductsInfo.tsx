@@ -13,7 +13,8 @@ const getUpcommingProductDetails = async (_id: string): Promise<ProductInterface
       _id,
       image,
       title,
-      price
+      price,
+      description
     }`,
         { _id }
     );
@@ -36,6 +37,7 @@ const UpcommingProductsInfo = ({ params }: { params: ProductInterface }) => {
 
     // Check if upcommingProductDetails is available before accessing its properties
     const productTitle = upcommingProductDetails?.title || '';
+    const productDescription = upcommingProductDetails?.description || '';
     //@ts-ignore
     const productImage = upcommingProductDetails?.image;
     const productPrice = upcommingProductDetails?.price || '';
@@ -45,20 +47,24 @@ const UpcommingProductsInfo = ({ params }: { params: ProductInterface }) => {
             {upcommingProductDetails && (
                 <section className="mt-28">
                     <Wrapper>
-                        <div>
+                        <div className='m-auto'>
                             {/* upper-portion */}
-                            <div>
+                            <div className="flex  items-center space-y-5 flex-col md:flex-row">
                                 {/* left-portion */}
-                                <div>
-
-                                    {/* Render the retrieved data */}
-                                    <p>{productTitle}</p>
+                                <div className='flex-1 md:ml-20 '>
                                     {/* @ts-ignore */}
-                                    <Image src={urlForImage(productImage).url()} width={400} height={400} alt="Product-Image" />
-                                    <div className="text-xl hover:shadow-lg">{productPrice}</div>
+                                    <Image src={urlForImage(productImage).url()} width={500} height={300} alt="Product-Image" />
                                 </div>
                                 {/* right-portion */}
-                                <div className=""></div>
+                                <div className="p-8 flex-1 hover:shadow-lg -mt-9">
+                                    <p className='text-2xl font-semibold '>{productTitle}</p>
+                                    <h1 className='font-bold text-xl mt-4'>Product Details:</h1>
+                                    <p className='font-medium break-all tracking-wider mt-5'>{productDescription}</p>
+                                    <div className='flex gap-x-4 mt-7'>
+                                        <p className='font-bold text-xl'>Price:</p>
+                                        <div className="text-xl ">${productPrice}</div>
+                                    </div>
+                                </div>
                             </div>
                             {/* bottom-portion */}
                         </div>
