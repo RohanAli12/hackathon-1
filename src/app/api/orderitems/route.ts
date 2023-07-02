@@ -33,18 +33,22 @@ export const POST = async (request: NextRequest) => {
       .select({ max: sql<number>`max(order_id)` })
       .from(orders);
     const rlt = result[0].max;
-  
-    const response = await db
-      .insert(orderitems)
-      .values({
-        quantity: req.quantity,
-        product_id: req.product_id,
-        customer_id: hasCookie as string,
-        order_id: rlt,
-      })
-      .returning();
-    console.log(response);
-    return NextResponse.json({ response });
+
+    const insertedItems = [];
+    for (const item of req) {
+      const response = await db
+        .insert(orderitems)
+        .values({
+          quantity: item.quantity,
+          product_id: item.product_id,
+          customer_id: hasCookie as string,
+          order_id: rlt,
+        })
+        .returning();
+      insertedItems.push(response);
+    }
+    console.log(insertedItems)
+    return NextResponse.json({ response: insertedItems });
   } catch (error) {
     console.log(error);
     return NextResponse.json({

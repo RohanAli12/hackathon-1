@@ -8,6 +8,7 @@ import { useAppDispatch } from '../../store/store';
 import { TrashIcon } from '@heroicons/react/24/solid'
 import Wrapper from '@/shared/Wrapper';
 import { handleLocalCart,removeCartItem } from '@/shared/AddToCartBtn';
+import { toast } from 'react-hot-toast';
 
 
 interface Props {
@@ -19,6 +20,7 @@ const CartItemCard = ({ cartItem }: Props) => {
   const dispatch = useAppDispatch();
   const handleRemove = () => {
     dispatch(removeFromCart(cartItem.product._id))
+    toast.success("Removed From Cart")
     removeCartItem(cartItem.product._id);
   }
 
@@ -41,10 +43,12 @@ const CartItemCard = ({ cartItem }: Props) => {
               <QtyBtnComp qty={cartItem.qty}
                 onDecrease={() => {
                   dispatch(decreament(cartItem.product))
+                  toast.success("Removed Sucessfully")
                   handleLocalCart(cartItem.product._id, cartItem.qty - 1)
                 }}
                 onIncrease={() => {
                   dispatch(increament(cartItem.product))
+                  toast.success("Added Sucessfully")
                   handleLocalCart(cartItem.product._id, cartItem.qty + 1)
                 }} />
             </div>

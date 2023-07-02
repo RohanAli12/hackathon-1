@@ -3,6 +3,7 @@ import { Lato } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Providers from '@/components/Providers'
+import { Toaster } from 'react-hot-toast'
 
 
 const inter = Lato({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={inter.className} style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Providers>
           <Header />
+          <Toaster />
           <main style={{ flex: 1 }}>
             {children}
           </main>

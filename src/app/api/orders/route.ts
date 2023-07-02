@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { orders, db } from "@/lib/drizzle";
 import { getCookies, getCookie, setCookie } from "cookies-next";
 import { cookies } from "next/headers";
+// import { useAppSelector } from "../../../../store/store";
+// import { totalPriceSelector } from "../../../../store/features/cartSlice";
 
 export const GET = async (request: NextRequest) => {
   try {
@@ -29,14 +31,14 @@ export const POST = async (request: NextRequest) => {
         customer_email: req.email,
         customer_id:hasCookie as string,
         order_date: formattedDate,
-        total_amount :req.totalAmount,
+        total_amount:req.totalPrice,
         address:req.address,
         city:req.city,
         state:req.state       
       })
       .returning();
 
-
+ console.log(response)
     return NextResponse.json({ response });
   } catch (error) {
     console.log(error);

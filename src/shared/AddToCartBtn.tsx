@@ -5,6 +5,7 @@ import { decreament, increament, productQtyInCartSelector, saveCart } from '../.
 import QtyBtnComp from '../components/QtyBtnComp';
 import { getCookies, getCookie, setCookie } from "cookies-next";
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 interface Props {
   product: ProductInterface;
@@ -31,12 +32,12 @@ export const removeCartItem = (productId: string) => {
 };
 
 
-const handleLocalCart = (productId: string, newQty: number) => {
+const handleLocalCart = (product_id: string, newQty: number) => {
   const getCart = localStorage.getItem("cartItems");
   const storeCartItem = getCart ? JSON.parse(getCart) : [];
 
   const existingCartItemIndex = storeCartItem.findIndex(
-    (item: { product_id: string }) => item.product_id === productId
+    (item: { product_id: string }) => item.product_id === product_id
   );
 
   if (existingCartItemIndex !== -1) {
@@ -52,7 +53,7 @@ const handleLocalCart = (productId: string, newQty: number) => {
     // If the product is not in the cart, add it
     const newCartItem = {
       quantity: newQty,
-      product_id: productId,
+      product_id: product_id,
     };
     const updatedCartItems = [...storeCartItem, newCartItem];
 
@@ -77,6 +78,7 @@ const AddToCartBtn = (props: Props) => {
   const toApi = () => {
     dispatch(increament(props.product));
     handleLocalCart(props.product._id, qty + 1);
+    toast.success('Added To Cart!')
   };
 
   if (!isLoggedIn) {
@@ -118,10 +120,12 @@ const AddToCartBtn = (props: Props) => {
       qty={qty}
       onDecrease={() => {
         dispatch(decreament(props.product));
+        toast.success("Removed Sucessfully")
         handleLocalCart(props.product._id, qty - 1);
       }}
       onIncrease={() => {
         dispatch(increament(props.product));
+        toast.success("Added Sucessfully")
         handleLocalCart(props.product._id, qty + 1);
       }}
     />
