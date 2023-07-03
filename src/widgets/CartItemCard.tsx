@@ -25,6 +25,7 @@ const CartItemCard = ({ cartItem }: Props) => {
   }
 
   return (
+    
     <section className='mt-28'>
       <Wrapper>
         <div className="flex flex-col md:flex-row gap-5">
