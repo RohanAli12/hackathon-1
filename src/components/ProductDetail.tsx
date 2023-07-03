@@ -38,7 +38,6 @@ const ProductDetail = ({ params }: { params: ProductInterface }) => {
             const details = await AllProductsData(params._id);
             setUpcommingProductDetails(details);
         };
-
         fetchProductDetails();
     }, [params._id]);
 
