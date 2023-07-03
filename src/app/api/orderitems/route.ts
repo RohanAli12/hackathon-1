@@ -33,7 +33,6 @@ export const POST = async (request: NextRequest) => {
       .select({ max: sql<number>`max(order_id)` })
       .from(orders);
     const rlt = result[0].max;
-    const orderID = rlt; // Get the received order_id
 
     const insertedItems = [];
     for (const item of req) {
@@ -43,7 +42,7 @@ export const POST = async (request: NextRequest) => {
           quantity: item.quantity,
           product_id: item.product_id,
           customer_id: hasCookie as string,
-          order_id: orderID,
+          order_id: rlt,
         })
         .returning();
       insertedItems.push(response);

@@ -12,8 +12,7 @@ const Cart = () => {
   const cartItems = useAppSelector((state)=>state.cart.cartItems)
   const totalPrice = useAppSelector(totalPriceSelector)  
   if(cartItems.length == 0){
-    localStorage.clear()
-   return(
+      return(
      <section className='mt-36'>
         <Wrapper>
         <h3 className='mt-20 font-bold tracking-wider text-xl md:text-3xl'>Shopping Cart</h3>
