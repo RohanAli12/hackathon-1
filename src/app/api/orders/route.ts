@@ -23,7 +23,7 @@ export const POST = async (request: NextRequest) => {
   console.log(hasCookie)
   try {
     const currentDate = new Date();
-    const formattedDate = currentDate.toISOString();
+    const formattedDate = currentDate.toUTCString();
     const response = await db
       .insert(orders)
       .values({
@@ -37,7 +37,7 @@ export const POST = async (request: NextRequest) => {
         state:req.state       
       })
       .returning();
-
+      
  console.log(response)
     return NextResponse.json({ response });
   } catch (error) {

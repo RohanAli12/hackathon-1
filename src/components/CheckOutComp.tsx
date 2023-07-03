@@ -42,10 +42,8 @@ const CheckOut = () => {
     quantity: item.quantity,
     product_id: item.product_id,
   }));
-  console.log(formattedCartItems)
-  
-  const handleSubmit = async () => {
     
+  const handleSubmit = async () => {  
       try {
         const [orderRes, orderItemRes] = await Promise.all([
           fetch("/api/orders", {
@@ -63,7 +61,7 @@ const CheckOut = () => {
             body: JSON.stringify(formattedCartItems),
           }),
         ]);
-  
+        console.log(form.amount)
         if (orderRes.ok && orderItemRes.ok) {
           localStorage.clear();
 
