@@ -29,7 +29,7 @@ export const POST = async (request: NextRequest) => {
         id:hasCookie as string,
       })
       .returning();
-
+console.log(response)
 
     return NextResponse.json({ response });
   } catch (error) {

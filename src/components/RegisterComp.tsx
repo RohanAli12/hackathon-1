@@ -35,7 +35,7 @@ const RegisterComp = () => {
         }
         const loadingToastId = toast.loading('Submitting...');
         try {
-            const res = await fetch('/api/register', {
+            const res = await fetch('/api/customers', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

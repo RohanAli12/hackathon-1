@@ -5,7 +5,7 @@ import {sql} from "@vercel/postgres"
 export const customers = pgTable("customers",{
     id: varchar("customer_id").primaryKey(),
     name: varchar("name",{
-        length:255
+        length:255 
     }).notNull(),
     email: varchar("email",{
         length:255
