@@ -1,15 +1,9 @@
-'use client'
 import Wrapper from '@/shared/Wrapper';
 import Image from 'next/image';
 import { ProductInterface } from '@/shared/ProductInterface';
 import { getAllProductSanity } from '@/app/cmsFetch';
 import { urlForImage } from '../../../../sanity/lib/image';
 import AddToCartBtn from '@/shared/AddToCartBtn';
-
-
-
-
-
 
 
 const page = async({ params }: { params: ProductInterface }) => {
