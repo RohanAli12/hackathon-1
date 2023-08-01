@@ -1,3 +1,4 @@
+'use client'
 import Wrapper from '@/shared/Wrapper';
 import Image from 'next/image';
 import { ProductInterface } from '@/shared/ProductInterface';
@@ -8,7 +9,7 @@ import AddToCartBtn from '@/shared/AddToCartBtn';
 
 const page = async({ params }: { params: ProductInterface }) => {
     const data: ProductInterface[] = await getAllProductSanity()
-    const filterData = data.filter((items: any) => items._id === params._id)
+    const filterData = data.filter((items: ProductInterface) => items._id === params._id)
     return (
         <>
         <div>
