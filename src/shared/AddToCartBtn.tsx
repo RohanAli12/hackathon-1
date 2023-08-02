@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import { ProductInterface } from '@/shared/ProductInterface';
 import { useAppDispatch, useAppSelector } from '../../store/store';
