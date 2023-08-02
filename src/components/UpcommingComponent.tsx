@@ -13,7 +13,7 @@ const UpcommingComponent:FC<{item:ProductInterface}> = ({item}) => {
     <div className="max-w-xl rounded overflow-hidden bg-[#E5E4E2] md:flex-col flex-col flex shadow-lg  hover:scale-105 md:hover:scale-105  hover:duration-300 hover:ease-linear ">
           <Image src={urlForImage(item.image).url()} className='max-h-[280px] object-cover object-center ' width={400} height={400}  alt="Upcomming Events" />
           <strong className="text-slate-700 font-extrabold text-2xl">{item.title}</strong>
-          <div className="font-semibold text-xl mb-2">${item.price}</div>
+          <div className="font-semibold text-xl mb-2">${item.price}</div>          
     </div>
    </Link>
   )
