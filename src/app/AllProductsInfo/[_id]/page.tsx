@@ -32,7 +32,7 @@ const page = async({ params }: { params: ProductInterface }) => {
                                         <p className='font-bold text-xl'>Price:</p>
                                         <div className="text-xl font-semibold ">${items.price}</div>
                                     </div>
-                                    {/* <div className='mt-7'><AddToCartBtn product={items} /></div> */}
+                                    <div className='mt-7'><AddToCartBtn product={items} /></div>
                                 </div>
                             </div>
                             {/* bottom-portion */}

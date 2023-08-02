@@ -33,7 +33,7 @@ const page = async ({ params }: { params: { category: string } }) => {
                                     <strong className="text-slate-700 font-extrabold text-2xl">{items.title}</strong>
                                     <div className="font-semibold text-xl mb-2">${items.price}</div>
                                 </div>
-                                </Link>
+                           </Link>
                         ))
                     }
                 </div>
