@@ -1,4 +1,4 @@
-'use client'
+
 import Wrapper from '@/shared/Wrapper';
 import Image from 'next/image';
 import { ProductInterface } from '@/shared/ProductInterface';
@@ -33,7 +33,6 @@ const page = async ({ params }: { params: ProductInterface }) => {
                                             <p className='font-bold text-xl'>Price:</p>
                                             <div className="text-xl ">${items.price}</div>
                                         </div>
-                                        <div className='mt-7'><AddToCartBtn product={items} /></div>
                                     </div>
                                 </div>
                                 {/* bottom-portion */}
