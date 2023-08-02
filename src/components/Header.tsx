@@ -42,9 +42,9 @@ const Header = () => {
                     {/* nav */}
                     
                     <ul className={`flex ${!isMobileScreen ? '' : 'hidden'} md:flex-row gap-x-4 md:space-x-3 md:justify-start  font-light text-xl md:text-2xl`}>
-                        <li><Link href={"/Men"}>Men</Link></li>
-                        <li><Link href={"/Women"}>Women</Link></li>
-                        <li><Link href={"/AllProducts"}>All Products</Link></li>
+                        <li><Link href={"/Products/Men"}>Men</Link></li>
+                        <li><Link href={"/Products/Women"}>Women</Link></li>
+                        <li><Link href={"/Products/AllProducts"}>All Products</Link></li>
                     </ul>
                     {isMobileScreen?(<div className='absolute right-2 '><Dropdown/></div>):(
                         <div className=' absolute md:right-3  '>
