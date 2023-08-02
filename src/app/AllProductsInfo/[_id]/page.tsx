@@ -1,4 +1,3 @@
-
 import Wrapper from '@/shared/Wrapper';
 import Image from 'next/image';
 import { ProductInterface } from '@/shared/ProductInterface';
