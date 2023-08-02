@@ -27,7 +27,7 @@ const page = async ({ params }: { params: { category: string } }) => {
                     }
                     {params.category === "AllProducts" &&
                         data.map((items: ProductInterface) => (
-                            <Link key={items._id} href={`/AllProductsInfo/${items._id}`}>
+                           <Link key={items._id} href={`/AllProductsInfo/${items._id}`}>
                                 <div className="max-w-xl rounded overflow-hidden bg-[#E5E4E2] flex-col  flex shadow-lg  hover:scale-105  hover:duration-300 hover:ease-linear ">
                                     <Image src={urlForImage(items.image).url()} className='max-h-[280px] object-cover object-center ' width={400} height={400} alt="Upcomming Events" />
                                     <strong className="text-slate-700 font-extrabold text-2xl">{items.title}</strong>
