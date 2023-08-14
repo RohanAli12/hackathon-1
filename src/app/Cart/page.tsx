@@ -12,9 +12,6 @@ import StripeCheckOut from '@/components/StripeCheckOut'
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.cartItems)
   const totalPrice = useAppSelector(totalPriceSelector)
-  if(cartItems.length==0){
-    localStorage.removeItem("cartItems")
-  }
   if (cartItems.length == 0) {
       return (
         <section className='mt-36'> 
