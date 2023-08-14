@@ -45,17 +45,17 @@ const CartItemCard = ({ cartItem }: Props) => {
                 onDecrease={() => {
                   dispatch(decreament(cartItem.product))
                   toast.success("Removed Sucessfully")
-                  handleLocalCart(cartItem.product._id, cartItem.qty - 1)
+                  handleLocalCart(cartItem.product._id, cartItem.qty - 1,cartItem.product.price,cartItem.product.title)
                 }}
                 onIncrease={() => {
                   dispatch(increament(cartItem.product))
                   toast.success("Added Sucessfully")
-                  handleLocalCart(cartItem.product._id, cartItem.qty + 1)
+                  handleLocalCart(cartItem.product._id, cartItem.qty + 1,cartItem.product.price,cartItem.product.title)
                 }} />
             </div>
           </div>
         </div>
-      </Wrapper>
+      </Wrapper> 
     </section>
 
   );

@@ -12,7 +12,7 @@ interface Props {
   product: ProductInterface;
 }
 
-const updateCartItems = (items: { quantity: number; product_id: string }[]) => {
+const updateCartItems = (items: { quantity: number; product_id: string;price:number,title:string }[]) => {
   if (items.length === 0) {
     // localStorage.removeItem("cartItems"); // Remove the "cartItems" key if the cart is empty
   } else {
@@ -33,7 +33,7 @@ export const removeCartItem = (productId: string) => {
 };
 
 
-const handleLocalCart = (product_id: string, newQty: number) => {
+const handleLocalCart = (product_id: string, newQty: number,price:number,title:string) => {
   const getCart = localStorage.getItem("cartItems");
   const storeCartItem = getCart ? JSON.parse(getCart) : [];
 
@@ -55,6 +55,8 @@ const handleLocalCart = (product_id: string, newQty: number) => {
     const newCartItem = {
       quantity: newQty,
       product_id: product_id,
+      price:price,
+      title:title,
     };
     const updatedCartItems = [...storeCartItem, newCartItem];
 
@@ -78,7 +80,7 @@ const AddToCartBtn = (props: Props) => {
 
   const toApi = () => {
     dispatch(increament(props.product));
-    handleLocalCart(props.product._id, qty + 1);
+    handleLocalCart(props.product._id, qty + 1 ,props.product.price,props.product.title);
     toast.success('Added To Cart!')
   };
 
@@ -104,7 +106,7 @@ const AddToCartBtn = (props: Props) => {
             </div>
           </div>
         </Link>
-      </div>
+      </div> 
     );
   }
 
@@ -122,12 +124,12 @@ const AddToCartBtn = (props: Props) => {
       onDecrease={() => {
         dispatch(decreament(props.product));
         toast.success("Removed Sucessfully")
-        handleLocalCart(props.product._id, qty - 1);
+        handleLocalCart(props.product._id, qty - 1,props.product.price,props.product.title);
       }}
       onIncrease={() => {
         dispatch(increament(props.product));
         toast.success("Added Sucessfully")
-        handleLocalCart(props.product._id, qty + 1);
+        handleLocalCart(props.product._id, qty + 1,props.product.price,props.product.title);
       }}
     />
   );
